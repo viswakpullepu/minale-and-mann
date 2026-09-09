@@ -90,13 +90,28 @@ $(function () {
     }
 
     // -------------------------------------------------------------
-    // 3. BUTTON HOVER BORDER EFFECT
+    // 3. BUTTON HOVER BORDER EFFECT & CLICK NAVIGATION (EXACT TO ORIGINAL)
     // -------------------------------------------------------------
-    $(".captions-full ul li button").each(function () {
-        var $btn = $(this);
-        if (!$btn.find(".left").length) {
+    $(".captions-full ul li").each(function () {
+        var $li = $(this);
+        var $btn = $li.find("button");
+        if ($btn.length && !$btn.find(".left").length) {
             $btn.append('<div class="left"></div><div class="top"></div><div class="right"></div><div class="bottom"></div>');
         }
+
+        $btn.on("click", function (e) {
+            e.preventDefault();
+            pauseCountdown();
+            var btnText = $btn.text().toLowerCase().trim();
+            var link = $li.children(".inner").attr("data-link") ||
+                       $slidesList.find("li.cell").eq($li.index()).find(".inner").attr("data-link");
+
+            if (btnText === "get in touch" || (link && link.indexOf("/contact/") > -1)) {
+                openContactModal();
+            } else if (link && link !== "#" && link !== "") {
+                window.location.href = link;
+            }
+        });
     });
 
     // -------------------------------------------------------------
@@ -519,69 +534,73 @@ $(function () {
         if (level === 2) {
             c = $(window).width() < 768 ? "-11%" : "20%";
             var d = "hidden" === $(".submenu.second").css("visibility") ? 0 : 0.5;
-            TweenMax.to(".submenu.second", d, {
-                autoAlpha: 0,
-                onComplete: function () {
-                    $("#side-menu-container, #desktop-nav").addClass("extended");
-                    $("a[data-trigger='" + triggerId + "']").addClass("active");
-                    $(".submenu.second .text-menu, .submenu.second .line").css({ display: "none" });
-                    $(".submenu.second").find("." + triggerId).css({ display: "table-cell" });
-                    $(".submenu.second").find("." + triggerId).parent().find(".line").css({ display: "table-cell" });
-                    TweenMax.set($(".submenu.second li"), { x: 50, autoAlpha: 0 });
-                    TweenMax.set($(".submenu.second").find("." + triggerId).parent().find(".line"), { scaleY: 0 });
-                    TweenMax.to($(".sub-link[data-trigger='" + triggerId + "']"), 0.5, { autoAlpha: 1 });
-                    TweenMax.to($(".main"), 1, { x: c, ease: Cubic.easeInOut });
-                    TweenMax.to($(".submenu.first, .submenu.second"), 1, {
-                        x: c,
-                        autoAlpha: 1,
-                        ease: Cubic.easeInOut,
-                        onComplete: function () { dimMenuLinks(); }
-                    });
-                    TweenMax.staggerTo($(".submenu.second").find("." + triggerId).find("li"), 1, { x: 0, autoAlpha: 1, ease: Cubic.easeOut, delay: 0.5 }, 0.1);
-                    TweenMax.to($(".submenu.second").find("." + triggerId).parent().find(".line"), 2, {
-                        scaleY: 1,
-                        transformOrigin: "top left",
-                        force3D: "auto",
-                        delay: 1,
-                        ease: Cubic.easeOut
-                    });
-                    $(".submenu.second").attr("data-current", triggerId);
-                }
-            });
+            var executeLevel2 = function () {
+                $("#side-menu-container, #desktop-nav").addClass("extended");
+                $("a[data-trigger='" + triggerId + "']").addClass("active");
+                $(".submenu.second .text-menu, .submenu.second .line").css({ display: "none" });
+                $(".submenu.second").find("." + triggerId).css({ display: "table-cell" });
+                $(".submenu.second").find("." + triggerId).parent().find(".line").css({ display: "table-cell" });
+                TweenMax.set($(".submenu.second li"), { x: 50, autoAlpha: 0 });
+                TweenMax.set($(".submenu.second").find("." + triggerId).parent().find(".line"), { scaleY: 0 });
+                TweenMax.to($(".sub-link[data-trigger='" + triggerId + "']"), 0.5, { autoAlpha: 1 });
+                TweenMax.to($(".main"), 1, { x: c, ease: Cubic.easeInOut });
+                TweenMax.to($(".submenu.first, .submenu.second"), 1, {
+                    x: c,
+                    autoAlpha: 1,
+                    ease: Cubic.easeInOut,
+                    onComplete: function () { dimMenuLinks(); }
+                });
+                TweenMax.staggerTo($(".submenu.second").find("." + triggerId).find("li"), 1, { x: 0, autoAlpha: 1, ease: Cubic.easeOut, delay: 0.5 }, 0.1);
+                TweenMax.to($(".submenu.second").find("." + triggerId).parent().find(".line"), 2, {
+                    scaleY: 1,
+                    transformOrigin: "top left",
+                    force3D: "auto",
+                    delay: 1,
+                    ease: Cubic.easeOut
+                });
+                $(".submenu.second").attr("data-current", triggerId);
+            };
+            if (d === 0) {
+                executeLevel2();
+            } else {
+                TweenMax.to(".submenu.second", d, { autoAlpha: 0, onComplete: executeLevel2 });
+            }
         } else {
             c = "50%";
             var d = "hidden" === $(".submenu.first").css("visibility") ? 0 : 0.5;
             TweenMax.to(".submenu.second", 0.5, { autoAlpha: 0, ease: Cubic.easeOut });
-            TweenMax.to(".submenu.first", d, {
-                autoAlpha: 0,
-                onComplete: function () {
-                    $("#side-menu-container, #desktop-nav").addClass("expanded");
-                    $("a[data-trigger='" + triggerId + "']").addClass("active");
-                    $(".submenu.first .text-menu, .submenu.first .line").css({ display: "none" });
-                    $(".submenu.first").find("." + triggerId).css({ display: "table-cell" });
-                    $(".submenu.first").find("." + triggerId).parent().find(".line").css({ display: "table-cell" });
-                    TweenMax.to(".submenu.second", 1, { x: c, autoAlpha: 0, ease: Cubic.easeInOut });
-                    TweenMax.set($(".submenu.first li"), { x: 50, autoAlpha: 0 });
-                    TweenMax.set($(".submenu.first").find("." + triggerId).parent().find(".line"), { scaleY: 0 });
-                    TweenMax.to($(".sub-link[data-trigger='" + triggerId + "']"), 0.5, { autoAlpha: 1 });
-                    TweenMax.to($(".main"), 1, { x: c, ease: Cubic.easeInOut });
-                    TweenMax.to($(".submenu.first"), 1, {
-                        x: c,
-                        autoAlpha: 1,
-                        ease: Cubic.easeInOut,
-                        onComplete: function () { dimMenuLinks(); }
-                    });
-                    TweenMax.staggerTo($(".submenu.first").find("." + triggerId).find("li"), 1, { x: 0, autoAlpha: 1, ease: Cubic.easeOut, delay: 0.5 }, 0.1);
-                    TweenMax.to($(".submenu.first").find("." + triggerId).parent().find(".line"), 2, {
-                        scaleY: 1,
-                        transformOrigin: "top left",
-                        force3D: "auto",
-                        delay: 1,
-                        ease: Cubic.easeOut
-                    });
-                    $(".submenu.first").attr("data-current", triggerId);
-                }
-            });
+            var executeLevel1 = function () {
+                $("#side-menu-container, #desktop-nav").addClass("expanded");
+                $("a[data-trigger='" + triggerId + "']").addClass("active");
+                $(".submenu.first .text-menu, .submenu.first .line").css({ display: "none" });
+                $(".submenu.first").find("." + triggerId).css({ display: "table-cell" });
+                $(".submenu.first").find("." + triggerId).parent().find(".line").css({ display: "table-cell" });
+                TweenMax.to(".submenu.second", 1, { x: c, autoAlpha: 0, ease: Cubic.easeInOut });
+                TweenMax.set($(".submenu.first li"), { x: 50, autoAlpha: 0 });
+                TweenMax.set($(".submenu.first").find("." + triggerId).parent().find(".line"), { scaleY: 0 });
+                TweenMax.to($(".sub-link[data-trigger='" + triggerId + "']"), 0.5, { autoAlpha: 1 });
+                TweenMax.to($(".main"), 1, { x: c, ease: Cubic.easeInOut });
+                TweenMax.to($(".submenu.first"), 1, {
+                    x: c,
+                    autoAlpha: 1,
+                    ease: Cubic.easeInOut,
+                    onComplete: function () { dimMenuLinks(); }
+                });
+                TweenMax.staggerTo($(".submenu.first").find("." + triggerId).find("li"), 1, { x: 0, autoAlpha: 1, ease: Cubic.easeOut, delay: 0.5 }, 0.1);
+                TweenMax.to($(".submenu.first").find("." + triggerId).parent().find(".line"), 2, {
+                    scaleY: 1,
+                    transformOrigin: "top left",
+                    force3D: "auto",
+                    delay: 1,
+                    ease: Cubic.easeOut
+                });
+                $(".submenu.first").attr("data-current", triggerId);
+            };
+            if (d === 0) {
+                executeLevel1();
+            } else {
+                TweenMax.to(".submenu.first", d, { autoAlpha: 0, onComplete: executeLevel1 });
+            }
         }
     }
 
@@ -749,13 +768,7 @@ $(function () {
         }, 2500);
     });
 
-    // "Read More" button click behavior for project slides
-    $(".captions-full ul li button").not(":last").on("click", function () {
-        var cellIndex = $(this).closest("li").index();
-        if (cellIndex < slider.cells.length - 1) {
-            $slidesList.flickity("next");
-        }
-    });
+
 
     
     // Handle URL state param for instant state testing/verification
