@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="no-js">
+    <script>if(window.location.search.indexOf("nopreload")===-1){document.documentElement.className+=" preload";}</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Architecture and Interior Design Studio London | Minale + Mann</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="description" content="Minale + Mann is an architecture and interior design studio in London, specialising in bespoke interior design and architectural services.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Architecture and Interior Design Studio London | Minale + Mann">
+    <meta property="og:description" content="Minale + Mann is an architecture and interior design studio in London, specialising in bespoke interior design and architectural services.">
+    <meta property="og:url" content="https://minaleandmann.com/">
+    <meta property="og:site_name" content="Minale and Mann">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#1b1b1e">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Minale and Mann",
+          "url": "https://minaleandmann.com",
+          "logo": "assets/images/mm-white-1.svg",
+          "description": "Architecture and Interior Design Studio London",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "324 Queenstown Road",
+            "addressLocality": "London",
+            "postalCode": "SW8 4LT",
+            "addressCountry": "United Kingdom"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@minaleandmann.com",
+            "telephone": "(+44)02031764499",
+            "contactType": "customer service"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "name": "Architecture and Interior Design Studio London | Minale + Mann",
+          "description": "Minale + Mann is an architecture and interior design studio in London, specialising in bespoke interior design and architectural services."
+        }
+      ]
+    }
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/flickity.min.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+
+    <style>
+        @font-face {
+            font-family: 'Graphik';
+            src: url('assets/fonts/graphik/Graphik-Light.woff') format('woff'),
+                 url('assets/fonts/graphik/Graphik-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Graphik';
+            src: url('assets/fonts/graphik/Graphik-Medium.woff') format('woff'),
+                 url('assets/fonts/graphik/Graphik-Medium.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Graphik-Light';
+            src: url('assets/fonts/graphik/Graphik-Light.woff') format('woff'),
+                 url('assets/fonts/graphik/Graphik-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Graphik-Medium';
+            src: url('assets/fonts/graphik/Graphik-Medium.woff') format('woff'),
+                 url('assets/fonts/graphik/Graphik-Medium.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Additional precision resets and smooth video styling */
+        .slides .cell .background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+        .slides .cell .background {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        /* Make sure cursors follow smooth mouse tracker */
+        .slider-nav .left .cursor, .slider-nav .right .cursor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+        }
+        .slider-nav .left:hover .cursor, .slider-nav .right:hover .cursor {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        /* -------------------------------------------------------------
+           MENU OVERLAY & MULTI-TIER SLIDE COLUMNS (EXACT MATCH)
+           ------------------------------------------------------------- */
+        .desktop-slider_overlay .overlay-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .desktop-slider_overlay #side-menu-container {
+            background: rgba(0, 0, 0, 0.95);
+            display: table;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            transform: translateX(0);
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .menu-wrapper {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            width: 33.333%;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .menu-wrapper > ul.text-menu {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            list-style: none;
+            text-align: left;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .menu-wrapper > ul.text-menu > li {
+            list-style: none;
+            text-align: left;
+            padding: 12px 0;
+            position: relative;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .menu-wrapper > ul.text-menu > li a {
+            padding: 0;
+            display: inline-block;
+            border: 0;
+            color: #ffffff;
+            font-family: 'Graphik-Light', sans-serif;
+            font-size: 44px;
+            font-weight: 300;
+            line-height: 1.15em;
+            letter-spacing: -0.5px;
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .menu-wrapper > ul.text-menu > li a:hover,
+        .desktop-slider_overlay .overlay-menu .side-menu-container .menu-wrapper > ul.text-menu > li a.active {
+            opacity: 1 !important;
+            text-decoration: none;
+        }
+
+        /* Submenu container & columns */
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .inner {
+            display: table;
+            width: 100%;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .inner .line {
+            display: none;
+            vertical-align: middle;
+            background-color: #ffffff;
+            width: 1px;
+            height: 380px;
+            opacity: 0.25;
+            position: relative;
+            left: -40px;
+            transform-origin: top left;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .inner ul {
+            width: auto;
+            padding: 10% 0;
+            margin: 0;
+            display: none;
+            text-align: left;
+            list-style: none;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .inner ul li {
+            list-style: none;
+            text-align: left;
+            padding: 10px 0;
+            position: relative;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .inner ul li a {
+            padding: 0;
+            display: inline-block;
+            border: 0;
+            color: #ffffff;
+            font-family: 'Graphik-Light', sans-serif;
+            font-size: 28px;
+            font-weight: 300;
+            line-height: 1.2em;
+            letter-spacing: 0;
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .inner ul li a:hover,
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .inner ul li a.active {
+            opacity: 1 !important;
+            text-decoration: none;
+        }
+
+        /* Mobile back button */
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .back {
+            opacity: 0.5;
+            color: #ffffff;
+            text-align: left;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 10px 0 20px 0;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .desktop-slider_overlay .overlay-menu .side-menu-container .submenu .back:hover {
+            opacity: 1;
+        }
+
+        /* Overlay logos & social */
+        .desktop-slider_overlay .overlay-menu .logos {
+            position: fixed;
+            bottom: 40px;
+            left: 5%;
+            z-index: 1000;
+        }
+        .desktop-slider_overlay .overlay-menu .logos ul {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .desktop-slider_overlay .overlay-menu .logos ul li img {
+            max-width: 50px !important;
+            height: auto;
+        }
+
+        .desktop-slider_overlay .overlay-menu .social {
+            position: fixed;
+            bottom: 40px;
+            right: 5%;
+            z-index: 1000;
+        }
+        .desktop-slider_overlay .overlay-menu .social ul {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .desktop-slider_overlay .overlay-menu .social ul li a {
+            color: #ffffff;
+            font-size: 1.5em;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            text-decoration: none;
+        }
+        .desktop-slider_overlay .overlay-menu .social ul li a:hover {
+            opacity: 1;
+        }
+        .desktop-slider_overlay .overlay-menu .social ul li a.pnp-link {
+            font-size: 12px;
+            opacity: 0.5;
+        }
+
+        /* -------------------------------------------------------------
+           VIEW TOGGLE & OVERVIEW MODE (EXACT MATCH)
+           ------------------------------------------------------------- */
+        .nav-container .burger-container {
+            display: table-cell;
+            position: relative;
+            z-index: 100;
+            vertical-align: middle;
+            text-align: right;
+        }
+
+        .nav-container .view-toggle {
+            position: absolute;
+            top: 21px;
+            right: 32px;
+            color: #ffffff;
+            background: transparent;
+            border: none;
+            padding: 0;
+            width: 45px;
+            height: 32px;
+            cursor: pointer;
+            z-index: 1001;
+            overflow: visible;
+        }
+
+        .nav-container .view-toggle span.slider-icon {
+            width: 38px;
+            height: 14px;
+            display: inline-block;
+            border: 2px solid #ffffff;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container .burger {
+            position: relative;
+            top: -4px;
+            display: inline-block;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 0;
+            width: 34px;
+            height: 34px;
+            z-index: 1001;
+            margin-right: 0;
+        }
+
+        .nav-container .burger i {
+            position: relative;
+            display: inline-block;
+            width: 2.3em;
+            height: 2px;
+            background: #ffffff;
+            transition: all 0.2s ease-out;
+            vertical-align: middle;
+        }
+        .nav-container .burger i:before,
+        .nav-container .burger i:after {
+            content: "";
+            width: 2.3em;
+            height: 2px;
+            background: #ffffff;
+            position: absolute;
+            left: 0;
+            transition: all 0.2s ease-out;
+        }
+        .nav-container .burger i:before { top: -7px; }
+        .nav-container .burger i:after { bottom: -7px; }
+
+        .nav-container .burger.active i {
+            background: transparent !important;
+            width: 1.4em;
+        }
+        .nav-container .burger.active i:before {
+            top: 0;
+            width: 1.4em;
+            transform: rotate(45deg);
+        }
+        .nav-container .burger.active i:after {
+            bottom: 0;
+            width: 1.4em;
+            transform: rotate(-45deg);
+        }
+
+        /* Slider Wrapper & Overview Mode */
+        .slider-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #1b1b1e;
+        }
+
+        .slider-nav > .slider-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible !important;
+        }
+
+        .slider-nav > .slider-wrapper .flickity-viewport {
+            overflow: visible !important;
+            height: 100% !important;
+        }
+
+        .slider-nav > .slider-wrapper .slides {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider-nav > .slider-wrapper .slides li.cell {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: visible !important;
+        }
+
+        .slider-nav > .slider-wrapper.zoomed-out .slides li.cell {
+            cursor: pointer;
+            pointer-events: auto;
+            opacity: 0.35;
+            transition: opacity 0.4s ease;
+        }
+
+        .slider-nav > .slider-wrapper.zoomed-out .slides li.cell.is-selected {
+            opacity: 1 !important;
+        }
+
+        .slider-nav > .slider-wrapper.zoomed-out .slides li.cell:hover {
+            opacity: 0.8;
+        }
+
+        /* Overview mode slide margins and separation */
+        .slider-nav.zoom .slides li .inner .background,
+        .slider-nav .zoom .slides li .inner .background {
+            width: 94%;
+            left: 3%;
+        }
+
+        /* Append title ribbons below thumbnails */
+        .slider-nav .slider-wrapper .slides li .append {
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            position: relative;
+            bottom: 0;
+            width: 95vw;
+            text-align: center;
+            padding: 5px;
+            height: 400px;
+            font-size: 4.5em;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .slider-nav .slider-wrapper.zoomed-out .slides li .append,
+        .slider-nav .zoomed-out .slides li .append {
+            visibility: visible;
+        }
+
+        .slider-nav .slider-wrapper .slides li .append .inner {
+            opacity: 0.35;
+            transition: opacity 0.4s ease-out;
+            height: 100%;
+            display: inline-block;
+            overflow: visible !important;
+        }
+
+        .slider-nav .slider-wrapper .slides li.is-selected .append .inner {
+            opacity: 1 !important;
+        }
+
+        .slider-nav .slider-wrapper .slides li:hover .append .inner {
+            opacity: 0.8;
+        }
+
+        .slider-nav .slider-wrapper .slides li .append p {
+            text-transform: uppercase;
+            font-family: 'Graphik-Medium', sans-serif;
+            font-weight: 600;
+            font-size: 0.6em;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.2em;
+            letter-spacing: 3pt;
+            padding-top: 1.5em;
+        }
+
+        .slider-nav .slider-wrapper .slides li .append span {
+            text-transform: uppercase;
+            font-family: 'Graphik-Light', sans-serif;
+            font-weight: 300;
+            font-size: 0.35em;
+            color: #ffffff;
+            opacity: 0.5;
+            letter-spacing: 3pt;
+            display: block;
+            margin-top: 0.3em;
+        }
+
+        /* Progress Scrubber Bar at Bottom */
+        .slider-nav .progress-wrap {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            padding: 0 7%;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 500;
+            pointer-events: auto;
+        }
+
+        .slider-nav .progress-wrap .progress {
+            display: block;
+            height: 30px;
+            width: 100%;
+            background-color: transparent;
+            position: relative;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .slider-nav .progress-wrap .progress:after {
+            content: "";
+            width: 100%;
+            height: 1px;
+            display: block;
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 0;
+            background-color: #444444;
+            z-index: 1;
+        }
+
+        .slider-nav .progress-wrap .progress .progress-bar {
+            background-color: transparent;
+            display: block;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+            z-index: 2;
+            border-radius: 0;
+            box-shadow: none;
+            cursor: grab;
+        }
+
+        .slider-nav .progress-wrap .progress .progress-bar:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: calc(50% - 2px);
+            background-color: #ffffff;
+            width: 100%;
+            height: 3px;
+        }
+        /* Top and bottom curtain styles */
+        .component-loading-screen .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .component-loading-screen .background .top { position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: #ffffff; z-index: 10; }
+        .component-loading-screen .background .bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: #ffffff; z-index: 10; }
+        .component-loading-screen .inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        .component-loading-screen .minale-logo {
+            width: 260px;
+            max-width: 80vw;
+            height: auto;
+        }
+        .component-loading-screen .minale-logo svg {
+            width: 100%;
+            height: auto;
+        }
+    
+        .mm-overlay {
+            z-index: 9999 !important;
+        }
+        .mm-close {
+            z-index: 10000 !important;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="home wp-singular page-template page-template-tpl-one-page-scroll page page-id-1476 wp-theme-pegasus homepage" data-domain="">
+
+    <!-- Loading Screen Component -->
+    <section class="component component-loading-screen -text">
+        <div class="background">
+            <div class="top"></div>
+            <div class="bottom"></div>
+        </div>
+        <div class="inner">
+            <div class="intro-text">
+                <div class="minale-logo">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 269 141.8" style="enable-background:new 0 0 269 141.8;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:#1b1b1e;}
+                        
+        .mm-overlay {
+            z-index: 9999 !important;
+        }
+        .mm-close {
+            z-index: 10000 !important;
+            cursor: pointer;
+        }
+    </style>
+                        <g>
+                            <g>
+                                <polygon class="st0" points="269,94.5 237.4,0 237.4,0 221.6,0 221.6,0 197.8,71 174,0 174,0 158.3,0 158.3,0 134.5,71 110.7,0
+                110.7,0 95,0 95,0 71.2,71 47.4,0 47.4,0 31.7,0 31.7,0 0,94.5 15.7,94.5 39.5,23.4 63.3,94.5 63.4,94.5 79.1,94.5 79.1,94.5
+                102.9,23.4 126.7,94.5 126.7,94.5 142.4,94.5 142.4,94.5 166.2,23.4 190,94.5 190,94.5 205.7,94.5 205.7,94.5 229.5,23.4
+                253.3,94.5 "/>
+                            </g>
+                            <g>
+                                <path class="st0" d="M21.9,118v23.8h-2.2v-17.6l-8.8,12.2l-8.7-12.2v17.6H0V118h0.5l10.4,14.5L21.4,118H21.9z"/>
+                                <path class="st0" d="M30.8,141.8h-2.2V118h2.2V141.8z"/>
+                                <path class="st0" d="M38,118l15,18.3V118h2.2v23.8h-0.6l-15-18.2v18.2h-2.2V118H38z"/>
+                                <path class="st0" d="M72.1,118l11.4,23.8H81l-3.6-7.5H66l-3.6,7.5H60L71.4,118H72.1z M67.1,132.1h9.2l-4.6-9.6L67.1,132.1z"/>
+                                <path class="st0" d="M92.4,139.5h12.2v2.2H90.1V118h2.3V139.5z"/>
+                                <path class="st0" d="M113.7,120.2v8.6H126v2.2h-12.3v8.6H126v2.2h-14.6V118H126v2.2H113.7z"/>
+                                <path class="st0" d="M147.8,138.7v-7.9h-7.9v-1.9h7.9V121h1.9v7.9h7.9v1.9h-7.9v7.9H147.8z"/>
+                                <path class="st0" d="M193.6,118v23.8h-2.2v-17.6l-8.8,12.2l-8.7-12.2v17.6h-2.2V118h0.5l10.4,14.5L193,118H193.6z"/>
+                                <path class="st0" d="M210.4,118l11.4,23.8h-2.4l-3.6-7.5h-11.4l-3.6,7.5h-2.5l11.4-23.8H210.4z M205.4,132.1h9.2l-4.6-9.6
+                L205.4,132.1z"/>
+                                <path class="st0" d="M227,118l15,18.3V118h2.2v23.8h-0.6l-15-18.2v18.2h-2.2V118H227z"/>
+                                <path class="st0" d="M251.8,118l15,18.3V118h2.2v23.8h-0.6l-15-18.2v18.2h-2.2V118H251.8z"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Header & Navigation -->
+    <header id="page-header">
+        <div class="desktop-slider_overlay mobile-slider_overlay">
+            <nav class="nav-container nav-height display-table-xs" id="desktop-nav">
+                <div>
+                    <a class="image" href="/">
+                        <svg version="1.1" id="logo_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 269 95.6" style="enable-background:new 0 0 269 95.6;" xml:space="preserve">
+                            <style type="text/css">
+                                .header-logo{fill:#FFFFFF;}
+                            
+        .mm-overlay {
+            z-index: 9999 !important;
+        }
+        .mm-close {
+            z-index: 10000 !important;
+            cursor: pointer;
+        }
+    </style>
+                            <g>
+                                <g>
+                                    <polygon class="header-logo" points="269,94.5 237.4,0 237.4,0 221.6,0 221.6,0 197.8,71 174,0 174,0 158.3,0 158.3,0 134.5,71 110.7,0
+                                    110.7,0 95,0 95,0 71.2,71 47.4,0 47.4,0 31.7,0 31.7,0 0,94.5 15.7,94.5 39.5,23.4 63.3,94.5 63.4,94.5 79.1,94.5 79.1,94.5
+                                    102.9,23.4 126.7,94.5 126.7,94.5 142.4,94.5 142.4,94.5 166.2,23.4 190,94.5 190,94.5 205.7,94.5 205.7,94.5 229.5,23.4
+                                    253.3,94.5"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <div class="project">
+                            <span class="case"></span>
+                        </div>
+                    </a>
+
+                    <div class="burger-container">
+                        <button class="navbar-toggle navbar-toggle-overlay burger" type="button" aria-label="Toggle navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i></i>
+                        </button>
+
+                        <button class="view-toggle" title="Toggle Overview / Detail View" aria-label="Toggle view">
+                            <span class="slider-icon"></span>
+                        </button>
+                    </div>
+
+                    <!-- Overlay Fullscreen / Slide Menu -->
+                    <div class="overlay-menu">
+                        <div class="side-menu-veil pnp-toggle-mob-nav" id="side-menu-veil"></div>
+                        <div class="side-menu-container" id="side-menu-container">
+
+                            <!-- Tier 1 Menu -->
+                            <div class="main menu-wrapper">
+                                <ul class="text-menu">
+                                    <li>
+                                        <div class="parent has-children">
+                                            <a href="#" data-trigger="2199">Services</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="parent has-children">
+                                            <a href="#" data-trigger="3394">Portfolio</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="parent">
+                                            <a href="#about" class="menu-link-about" data-slide="9">About</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="parent">
+                                            <a href="#contact" class="menu-link-contact" data-slide="10">Contact</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Tier 2 Submenus -->
+                            <div class="submenu menu-wrapper first">
+                                <!-- Submenu 2199: Services -->
+                                <div class="inner">
+                                    <div class="line"></div>
+                                    <ul class="text-menu first-level 2199">
+                                        <li>
+                                            <div class="back visible-xs visible-sm">
+                                                <div class="label">Back</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="has-children">
+                                                <a class="sub-link first-tier" href="#" data-trigger="2536">Architectural Design</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link first-tier" href="#" data-slide="3">Planning Applications</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="has-children">
+                                                <a class="sub-link first-tier" href="#" data-trigger="2544">Interior Design</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link first-tier" href="#" data-slide="6">Conservation & Heritage Design</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="has-children">
+                                                <a class="sub-link first-tier" href="#" data-trigger="2684">Create & Construct</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Submenu 3394: Portfolio -->
+                                    <ul class="text-menu first-level 3394" style="display: none;">
+                                        <li>
+                                            <div class="back visible-xs visible-sm">
+                                                <div class="label">Back</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link first-tier" href="#" data-slide="1">Residential</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link first-tier" href="#" data-slide="2">Commercial</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link first-tier" href="#" data-slide="6">Conservation & Heritage</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Tier 3 Submenus -->
+                            <div class="submenu menu-wrapper second">
+                                <div class="inner">
+                                    <div class="line"></div>
+                                    <!-- 2536: Architectural Design -->
+                                    <ul class="text-menu second-level 2536" style="display: none;">
+                                        <li>
+                                            <div class="back visible-xs visible-sm">
+                                                <div class="label">Back</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link second-tier" href="#" data-slide="1">Residential</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link second-tier" href="#" data-slide="2">Commercial</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <!-- 2544: Interior Design -->
+                                    <ul class="text-menu second-level 2544" style="display: none;">
+                                        <li>
+                                            <div class="back visible-xs visible-sm">
+                                                <div class="label">Back</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link second-tier" href="#" data-slide="4">Residential</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link second-tier" href="#" data-slide="5">Commercial</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <!-- 2684: Create & Construct -->
+                                    <ul class="text-menu second-level 2684" style="display: none;">
+                                        <li>
+                                            <div class="back visible-xs visible-sm">
+                                                <div class="label">Back</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link second-tier" href="#" data-slide="7">Residential</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a class="sub-link second-tier" href="#" data-slide="8">Commercial</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Award Badges -->
+                        <div class="logos">
+                            <ul>
+                                <li>
+                                    <img src="assets/images/DESIGN_ARCHITECTURE_2018_Winner_WHITE_300.png" width="75" height="auto" alt="Design Architecture Winner 2018">
+                                </li>
+                                <li>
+                                    <img src="assets/images/tst_bha_winner_18.png" width="75" height="auto" alt="British Homes Awards Winner 2018">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="social">
+                            <ul>
+                                <li class="hidden-xs"><a href="https://www.plugandplaydesign.co.uk" target="_blank" class="pnp-link">Web Design Agency</a></li>
+                                <li><a href="https://www.instagram.com/minaleandmann_/" target="_blank" aria-label="Instagram"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="https://www.pinterest.co.uk/minalemann/" target="_blank" aria-label="Pinterest"><i class="ion-social-pinterest"></i></a></li>
+                            </ul>
+                            <a href="https://www.plugandplaydesign.co.uk" target="_blank" class="pnp-link visible-xs">Web Design Agency</a>
+                        </div>
+
+                        <div class="mobile-close"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Interactive Slider Component -->
+    <div class="component slider-nav" id="sliderNav">
+        <div class="slider-wrapper">
+            <ul class="slides">
+
+                <!-- Slide 1: Design Matters -->
+                <li class="cell active">
+                    <div class="inner" data-link="#">
+                        <div class="background" style="background-image: url('assets/images/1-13.jpg');"
+                             data-desktop="assets/images/1-13.jpg"
+                             data-mobile="assets/images/11.-Cannon-Place-Mobile-Banner.jpg">
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>design matters</p> <span>London Design Studio</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 2: Architectural Design (Residential) - Video -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background video" style="background-image: url('assets/images/slide_02-1600x1068.jpg');"
+                             data-poster="assets/images/slide_02-1600x1068.jpg"
+                             data-mobile="assets/images/3.-Broomwood-Mobile-Banner.jpg">
+                            <video loop muted playsinline poster="assets/images/slide_02-1600x1068.jpg">
+                                <source src="assets/videos/slide_02.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Architectural Design</p> <span>Residential</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 3: Architectural Design (Commercial) -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background" style="background-image: url('assets/images/1-New-Size-11.jpg');"
+                             data-desktop="assets/images/1-New-Size-11.jpg"
+                             data-mobile="assets/images/x1.-Archway-69-Mobile-Banner-A.jpg">
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Architectural Design</p> <span>Commercial</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 4: Planning Applications -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background" style="background-image: url('assets/images/6.-Planning-Archway-img-10.jpg');"
+                             data-desktop="assets/images/6.-Planning-Archway-img-10.jpg"
+                             data-mobile="assets/images/1a-Archway-69-Mobile-Planning-NEW.jpg">
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Planning Applications</p> <span>Residential</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 5: Interior Design (Residential) - Video -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background video" style="background-image: url('assets/images/slide_05-1600x887.jpg');"
+                             data-poster="assets/images/slide_05-1600x887.jpg"
+                             data-mobile="assets/images/4.-No-40-Mobile-Banner.jpg">
+                            <video loop muted playsinline poster="assets/images/slide_05-1600x887.jpg">
+                                <source src="assets/videos/slide_05.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Interior Design</p> <span>Residential</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 6: Interior Design (Commercial) -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background" style="background-image: url('assets/images/1-New-Size-15.jpg');"
+                             data-desktop="assets/images/1-New-Size-15.jpg"
+                             data-mobile="assets/images/2.-Wig-Factory-Mobile-Banner-B.jpg">
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Interior Design</p> <span>Commercial</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 7: Conservation & Heritage Design - Video -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background video" style="background-image: url('assets/images/slide_07-1600x1069.jpg');"
+                             data-poster="assets/images/slide_07-1600x1069.jpg"
+                             data-mobile="assets/images/1a.-Alexander-Place-Con-Heritage-NEW.jpg">
+                            <video loop muted playsinline poster="assets/images/slide_07-1600x1069.jpg">
+                                <source src="assets/videos/slide_07.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Conservation & Heritage Design</p> <span>Residential</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 8: Create & Construct (Residential) - Video -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background video" style="background-image: url('assets/images/slide_08-1600x1068.jpg');"
+                             data-poster="assets/images/slide_08-1600x1068.jpg"
+                             data-mobile="assets/images/1.-Alexander-Place-Mobile-Banner.jpg">
+                            <video loop muted playsinline poster="assets/images/slide_08-1600x1068.jpg">
+                                <source src="assets/videos/slide_08.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Create & Construct</p> <span>Residential</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 9: Create & Construct (Commercial) -->
+                <li class="cell" data-section="Services">
+                    <div class="inner" data-link="#">
+                        <div class="background" style="background-image: url('assets/images/6-New-Size.jpg');"
+                             data-desktop="assets/images/6-New-Size.jpg"
+                             data-mobile="assets/images/2a.-Wig-Factory-Mobile-Create-Con.jpg">
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Create & Construct</p> <span>Commercial</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 10: Minale + Mann (About) - Video -->
+                <li class="cell" data-section="About">
+                    <div class="inner" data-link="#">
+                        <div class="background video" style="background-image: url('assets/images/slide_10-810x1080.jpg');"
+                             data-poster="assets/images/slide_10-810x1080.jpg"
+                             data-mobile="assets/images/2a.-Between-the-Commons-USE-ANIMATION-FILE.jpg">
+                            <video loop muted playsinline poster="assets/images/slide_10-810x1080.jpg">
+                                <source src="assets/videos/slide_10.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Minale + Mann</p> <span>About</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Slide 11: Contact -->
+                <li class="cell" data-section="Contact">
+                    <div class="inner" data-link="#">
+                        <div class="background" style="background-image: url('assets/images/9-2.jpg');"
+                             data-desktop="assets/images/9-2.jpg"
+                             data-mobile="assets/images/1b-Archway-69-Mobile-Contract-NEW.jpg">
+                        </div>
+                    </div>
+                    <div class="append">
+                        <div class="inner">
+                            <p>Contact</p> <span>Contact</span>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- Full Captions Staggered Over Slider -->
+        <div class="captions-full">
+            <ul>
+                <!-- Caption 1 -->
+                <li class="cell is-selected">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <h1 class="seo-title">Architecture and Interior Design Studio London</h1>
+                            </div>
+                            <h4>design matters</h4>
+                            <p>Minale + Mann is an award winning architectural and interior design studio based in London.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 2 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Residential</span>
+                                <div class="seo-title">Residential Architects London</div>
+                            </div>
+                            <h4>Architectural Design</h4>
+                            <p>The most important material with which we design, is light.</p>
+                            <button class="loadpage"><span>Read More</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 3 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Commercial</span>
+                                <div class="seo-title">Commercial Architects</div>
+                            </div>
+                            <h4>Architectural Design</h4>
+                            <p>Design is about a way of living, be it at home, in the workplace, relaxing, or entertaining. It is our duty as designers to enhance and encourage social interaction through good design.</p>
+                            <button class="loadpage"><span>Read More</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 4 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Residential</span>
+                                <div class="seo-title">Planning Applications</div>
+                            </div>
+                            <h4>Planning Applications</h4>
+                            <p>Dedicated architectural planning and submission services in London.</p>
+                            <button class="loadpage"><span>Read more</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 5 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Residential</span>
+                                <div class="seo-title">Residential Interior Design London</div>
+                            </div>
+                            <h4>Interior Design</h4>
+                            <p>We aspire to create an interior experience that is both memorable, and timeless.</p>
+                            <button class="loadpage"><span>Read More</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 6 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Commercial</span>
+                                <div class="seo-title">Commercial Interior Designers</div>
+                            </div>
+                            <h4>Interior Design</h4>
+                            <p>As architects and designers it is important to focus on the experience of the space we find ourselves, as much as it is concerned with the aesthetic.</p>
+                            <button class="loadpage"><span>Read More</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 7 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Residential</span>
+                                <div class="seo-title">Conservation Architects London</div>
+                            </div>
+                            <h4>Conservation & Heritage Design</h4>
+                            <p>Conservation Architects to transform your heritage property.</p>
+                            <button class="loadpage"><span>Read more</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 8 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Residential</span>
+                                <div class="seo-title">Residential Architectural Design Services</div>
+                            </div>
+                            <h4>Create & Construct</h4>
+                            <p>Whether a new build project, or transforming a home through renovation or refurbishment; we take the ordinary and elevate to the extraordinary.</p>
+                            <button class="loadpage"><span>Read More</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 9 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Commercial</span>
+                                <div class="seo-title">Commercial Design and Build Company</div>
+                            </div>
+                            <h4>Create & Construct</h4>
+                            <p>Whether a new build project, or transforming a space through renovation or refurbishment; we take the ordinary and elevate to the extraordinary.</p>
+                            <button class="loadpage"><span>Read More</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 10 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>About</span>
+                                <div class="seo-title">architecture and interior design studio</div>
+                            </div>
+                            <h4>Minale + Mann</h4>
+                            <p>At Minale + Mann we believe that ‘Design Matters’.</p>
+                            <button class="loadpage"><span>Read More</span></button>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Caption 11 -->
+                <li class="cell">
+                    <div class="inner">
+                        <div class="caption">
+                            <div class="subtitle">
+                                <span>Contact</span>
+                                <div class="seo-title">Contact</div>
+                            </div>
+                            <h4>Contact</h4>
+                            <p>Contact us and let us know about your project, or find out more about our award winning services.</p>
+                            <button class="loadpage"><span>Get in touch</span></button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section Indicator -->
+        <div class="section-wrap">
+            <div class="inner">
+                <div class="current"></div>
+            </div>
+        </div>
+
+        <!-- Left & Right Sensitive Cursor Hit-Areas -->
+        <div class="left back" style="display: none;">
+            <div class="cursor">
+                <img src="assets/images/ios-arrow-left.svg" alt="back">
+            </div>
+            <div class="hit-area"></div>
+        </div>
+        <div class="right next">
+            <div class="cursor">
+                <img src="assets/images/ios-arrow-right.svg" alt="next">
+            </div>
+            <div class="hit-area"></div>
+        </div>
+
+        <!-- Bottom Progress Bar for Overview / Scrubbing -->
+        <div class="progress-wrap">
+            <div class="progress">
+                <div class="progress-bar grabbable"></div>
+            </div>
+        </div>
+
+        <!-- Countdown Bar -->
+        <div class="countdown">
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <!-- Contact Drawer Modal Overlay -->
+    <div class="mm-overlay" data-title="Contact us" data-content="&lt;p&gt;Minale &amp;amp; Mann&lt;br /&gt;Archway 69&lt;br /&gt;324 Queenstown Road&lt;br /&gt;Battersea, London&lt;/p&gt;&lt;p&gt;email: &lt;a href=&quot;mailto:generalenquiries@minaleandmann.com&quot;&gt;generalenquiries@minaleandmann.com&lt;/a&gt;&lt;br /&gt;phone: &lt;a href=&quot;tel:02039586074&quot;&gt;020 3958 6074&lt;/a&gt;&lt;/p&gt;&lt;h4&gt;Get in Touch&lt;/h4&gt;">
+        <div class="shade"></div>
+        <div class="inner" style="width: 40%;">
+            <div class="wrap">
+                <h3 class="title">Contact us</h3>
+                <div class="subtitle"></div>
+                <div class="content">
+                    <p>Minale &amp; Mann<br>Archway 69<br>324 Queenstown Road<br>Battersea, London</p>
+                    <p>email: <a href="mailto:generalenquiries@minaleandmann.com">generalenquiries@minaleandmann.com</a><br>phone: <a href="tel:02039586074">020 3958 6074</a></p>
+                    <h4>Get in Touch</h4>
+                </div>
+                <div class="form-wrap">
+                    <div role="form" class="wpcf7" id="contact-form">
+                        <form class="wpcf7-form init">
+                            <p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" size="40" class="wpcf7-form-control wpcf7-text" required placeholder="Name*"></span></p>
+                            <p><span class="wpcf7-form-control-wrap your-number"><input type="tel" name="your-number" size="40" class="wpcf7-form-control wpcf7-text" required placeholder="Phone Number*"></span></p>
+                            <p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" size="40" class="wpcf7-form-control wpcf7-text" required placeholder="Email Address*"></span></p>
+                            <p><span class="wpcf7-form-control-wrap message"><textarea name="message" cols="40" rows="4" class="wpcf7-form-control wpcf7-textarea" placeholder="Message"></textarea></span></p>
+                            <p><span class="wpcf7-form-control-wrap your-consent"><span class="wpcf7-list-item"><label><input type="checkbox" name="your-consent" value="1" required> <span>I understand that my data will be stored in accordance with the privacy policy</span></label></span></span></p>
+                            <p><button type="submit" class="wpcf7-form-control wpcf7-submit">Submit</button></p>
+                            <div class="wpcf7-response-output" aria-hidden="true" style="display: none;"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Close Button for Drawer -->
+    <div class="mm-close">
+        <i class="ion-ios-close-empty"></i>
+    </div>
+
+    <!-- Core JavaScript Libraries -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/flickity.pkgd.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
