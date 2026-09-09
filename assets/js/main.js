@@ -45,77 +45,23 @@ $(function () {
     $(window).on("resize", checkMobileBackgrounds);
 
     // -------------------------------------------------------------
-    // 2. PRELOADER ANIMATION
+    // 2. ZOOM EFFECT UTILITY
     // -------------------------------------------------------------
-    var $preloader = $(".component-loading-screen.-text");
-    if (window.location.search.indexOf("nopreload") > -1) {
-        $(".captions-full").css({ "visibility": "visible", "opacity": 1, "display": "block" });
-        TweenMax.set(".captions-full, .captions-full .is-selected .subtitle, .captions-full .is-selected h4, .captions-full .is-selected p", { autoAlpha: 1 });
-        $(".captions-full .is-selected button").addClass("in").css("visibility", "visible");
-        if ($preloader.length) $preloader.remove();
-        $html.removeClass("preload");
-        playCurrentSlideVideo(0);
-        animateCaption(0);
-        startCountdown();
-    } else if ($preloader.length) {
-        var $st0 = $preloader.find(".st0");
-        TweenMax.set(".minale-logo", { autoAlpha: 0 });
-        TweenMax.fromTo(".minale-logo", 1.5, { autoAlpha: 0 }, { autoAlpha: 1, delay: 0.1 });
-        TweenMax.staggerFrom($st0, 2, { autoAlpha: 0, ease: Cubic.easeOut }, 0.08);
-        TweenMax.staggerTo($st0, 1.2, { autoAlpha: 0, ease: Cubic.easeInOut, delay: 0.9 }, 0.06);
-
-        TweenMax.allTo([".component-loading-screen .background > .top", ".component-loading-screen .background > .bottom"], 1, {
-            height: 0,
-            ease: Cubic.easeOut,
-            delay: 0.9,
-            onStart: function () {
-                TweenMax.set(".minale-logo", { autoAlpha: 0 });
-                $(".captions-full").css("display", "block");
-            },
-            onComplete: function () {
-                $preloader.fadeOut(400, function () {
-                    $preloader.remove();
-                });
-                $html.removeClass("preload");
-                playCurrentSlideVideo(0);
-                animateCaption(0);
-                startCountdown();
-            }
-        });
-    } else {
-        $html.removeClass("preload");
-        playCurrentSlideVideo(0);
-        animateCaption(0);
-        startCountdown();
-    }
-
-    // -------------------------------------------------------------
-    // 3. BUTTON HOVER BORDER EFFECT & CLICK NAVIGATION (EXACT TO ORIGINAL)
-    // -------------------------------------------------------------
-    $(".captions-full ul li").each(function () {
-        var $li = $(this);
-        var $btn = $li.find("button");
-        if ($btn.length && !$btn.find(".left").length) {
-            $btn.append('<div class="left"></div><div class="top"></div><div class="right"></div><div class="bottom"></div>');
+    window.zoomEffect = function (resetOnly) {
+        resetOnly = resetOnly || false;
+        var $activeBg = $slidesList.find("li.cell.is-selected").children(".inner").children(".background");
+        if (resetOnly) {
+            TweenMax.to($slidesList.find("li.cell").children(".inner").children(".background"), 2, { scale: 1, ease: Cubic.easeOut, overwrite: "all" });
+        } else {
+            $slidesList.find("li.cell").not(".is-selected").each(function () {
+                TweenMax.set($(this).children(".inner").children(".background"), { scale: 1 });
+            });
+            TweenMax.to($activeBg, 30, { scale: 1.2, delay: 0.5, ease: Cubic.easeOut });
         }
-
-        $btn.on("click", function (e) {
-            e.preventDefault();
-            pauseCountdown();
-            var btnText = $btn.text().toLowerCase().trim();
-            var link = $li.children(".inner").attr("data-link") ||
-                       $slidesList.find("li.cell").eq($li.index()).find(".inner").attr("data-link");
-
-            if (btnText === "get in touch" || (link && link.indexOf("/contact/") > -1)) {
-                openContactModal();
-            } else if (link && link !== "#" && link !== "") {
-                window.location.href = link;
-            }
-        });
-    });
+    };
 
     // -------------------------------------------------------------
-    // 4. FLICKITY SLIDER INITIALIZATION
+    // 3. FLICKITY SLIDER INITIALIZATION
     // -------------------------------------------------------------
     var slider = $slidesList.flickity({
         initialIndex: 0,
@@ -175,26 +121,86 @@ $(function () {
         var $btn = $activeLi.find("button");
         var $seo = $activeLi.find(".seo-title");
 
-        if (window.location.search.indexOf("nopreload") > -1) {
-            TweenMax.set([$subtitle, $h4, $p, $seo], { autoAlpha: 1 });
-            $btn.addClass("in").css("visibility", "visible");
-        } else {
-            TweenMax.set([$subtitle, $h4, $p, $seo], { autoAlpha: 0 });
-        }
         $btn.removeClass("in").css("visibility", "hidden");
-
-        // Stagger in
-        TweenMax.to($subtitle, 0.8, { autoAlpha: 1, delay: 0.1, ease: Cubic.easeOut });
-        TweenMax.to($h4, 1.0, { autoAlpha: 1, delay: 0.25, ease: Cubic.easeOut });
-        TweenMax.to($p, 1.0, {
-            autoAlpha: 1, delay: 0.4, ease: Cubic.easeOut, onComplete: function () {
-                $btn.addClass("in").css("visibility", "visible");
-            }
-        });
+        TweenMax.set([$subtitle, $h4, $p], { autoAlpha: 0 });
         if ($(window).width() < 767) {
-            TweenMax.to($seo, 0.8, { autoAlpha: 0.5, delay: 0.15, ease: Cubic.easeOut });
+            TweenMax.set($seo, { autoAlpha: 0 });
+        }
+
+        TweenMax.fromTo($subtitle, 1, { autoAlpha: 0 }, { autoAlpha: 1, delay: 0.1, ease: Cubic.easeOut });
+        TweenMax.fromTo($h4, 1.5, { autoAlpha: 0 }, { autoAlpha: 1, delay: 0.3, ease: Cubic.easeOut });
+        if ($(window).width() < 767) {
+            TweenMax.fromTo($seo, 1, { autoAlpha: 0 }, { autoAlpha: 0.5, delay: 0.3, ease: Cubic.easeOut });
+        }
+
+        if ($p.length) {
+            if (window.SplitText) {
+                var b = new SplitText($p, { type: "chars,words,lines" });
+                TweenMax.staggerFrom(b.words, 1.5, {
+                    autoAlpha: 0,
+                    ease: Cubic.easeOut,
+                    delay: 0.4,
+                    onStart: function () {
+                        TweenMax.set($p, { autoAlpha: 1 });
+                        $p.css("visibility", "visible");
+                    },
+                    onComplete: function () {
+                        $btn.addClass("in").css("visibility", "visible");
+                    }
+                }, 0.03);
+            } else {
+                TweenMax.to($p, 1.0, {
+                    autoAlpha: 1,
+                    delay: 0.4,
+                    ease: Cubic.easeOut,
+                    onComplete: function () {
+                        $btn.addClass("in").css("visibility", "visible");
+                    }
+                });
+            }
+        } else {
+            TweenMax.to($h4, 1.5, {
+                autoAlpha: 1,
+                delay: 0.3,
+                ease: Cubic.easeOut,
+                onComplete: function () {
+                    $btn.addClass("in").css("visibility", "visible");
+                }
+            });
         }
     }
+
+    // Countdown / Autoplay Progress
+    function startCountdown() {
+        if (countdownTween) countdownTween.kill();
+        if (isZoomedOut || isMenuOpen || $(".mm-overlay").is(":visible")) {
+            TweenMax.set($countdownBar, { width: "0%" });
+            return;
+        }
+        TweenMax.set($countdownBar, { width: "0%" });
+        countdownTween = TweenMax.to($countdownBar, AUTO_ADVANCE_TIME, {
+            width: "100%",
+            ease: Linear.easeNone,
+            onComplete: function () {
+                if (!isZoomedOut && !isMenuOpen && !$(".mm-overlay").is(":visible")) {
+                    var nextIndex = (slider.selectedIndex + 1) % slider.cells.length;
+                    $slidesList.flickity("select", nextIndex);
+                }
+            }
+        });
+    }
+
+    function pauseCountdown() {
+        if (countdownTween) countdownTween.pause();
+    }
+
+    function resumeCountdown() {
+        if (countdownTween && !isZoomedOut && !isMenuOpen && !$(".mm-overlay").is(":visible")) {
+            countdownTween.resume();
+        }
+    }
+
+    $sliderWrapper.on("mouseenter", pauseCountdown).on("mouseleave", resumeCountdown);
 
     // Update section ribbon & progress
     function updateSlideUI(index) {
@@ -235,49 +241,99 @@ $(function () {
     $slidesList.on("select.flickity", function () {
         var index = slider.selectedIndex;
         $captionsList.flickity("select", index);
-        var index = slider.selectedIndex;
         playCurrentSlideVideo(index);
         if (!isZoomedOut) {
             animateCaption(index);
+            window.zoomEffect();
         }
         updateSlideUI(index);
     });
 
-    updateSlideUI(0);
+    // Button Hover & Click Navigation
+    $(".captions-full ul li").each(function () {
+        var $li = $(this);
+        var $btn = $li.find("button");
+        if ($btn.length && !$btn.find(".left").length) {
+            $btn.append('<div class="left"></div><div class="top"></div><div class="right"></div><div class="bottom"></div>');
+        }
+
+        $btn.on("click", function (e) {
+            e.preventDefault();
+            pauseCountdown();
+            var btnText = $btn.text().toLowerCase().trim();
+            var link = $li.children(".inner").attr("data-link") ||
+                       $slidesList.find("li.cell").eq($li.index()).find(".inner").attr("data-link");
+
+            if (btnText === "get in touch" || (link && link.indexOf("/contact/") > -1)) {
+                openContactModal();
+            } else if (link && link !== "#" && link !== "") {
+                window.location.href = link;
+            }
+        });
+    });
 
     // -------------------------------------------------------------
-    // 5. COUNTDOWN / AUTOPLAY PROGRESS
+    // 4. PRELOADER ANIMATION (EXACT TO ORIGINAL GLOBAL.MIN.JS)
     // -------------------------------------------------------------
-    function startCountdown() {
-        if (countdownTween) countdownTween.kill();
-        if (isZoomedOut || isMenuOpen || $(".mm-overlay").is(":visible")) {
-            TweenMax.set($countdownBar, { width: "0%" });
-            return;
-        }
-        TweenMax.set($countdownBar, { width: "0%" });
-        countdownTween = TweenMax.to($countdownBar, AUTO_ADVANCE_TIME, {
-            width: "100%",
-            ease: Linear.easeNone,
+    var $preloader = $(".component-loading-screen.-text");
+    var $captionTarget = $(".captions-full li:first-child .caption h5").length ? $(".captions-full li:first-child .caption h5") : $(".captions-full li:first-child .caption p");
+
+    if (window.location.search.indexOf("nopreload") > -1) {
+        $(".captions-full").css({ "visibility": "visible", "opacity": 1, "display": "block" });
+        TweenMax.set(".captions-full, .captions-full .is-selected .subtitle, .captions-full .is-selected h4, .captions-full .is-selected p", { autoAlpha: 1 });
+        $(".captions-full .is-selected button").addClass("in").css("visibility", "visible");
+        if ($preloader.length) $preloader.remove();
+        $html.removeClass("preload");
+        playCurrentSlideVideo(0);
+        updateSlideUI(0);
+        window.zoomEffect();
+    } else if ($preloader.length) {
+        $(".intro-text").css("display", "block");
+        var d = $preloader.find(".st0");
+        TweenMax.set($captionTarget, { autoAlpha: 0 });
+        TweenMax.set(".minale-logo, .captions-full li:first-child .caption .subtitle, .captions-full li:first-child .caption h4", { autoAlpha: 0 });
+        TweenMax.fromTo(".minale-logo", 2, { autoAlpha: 0 }, { autoAlpha: 1, delay: 0.5 });
+        TweenMax.staggerFrom(d, 3, { autoAlpha: 0, ease: Cubic.easeOut }, 0.1);
+        TweenMax.staggerTo(d, 1.5, { autoAlpha: 0, ease: Cubic.easeInOut, delay: 2 }, 0.1);
+
+        TweenMax.allTo([".component-loading-screen .background > .top", ".component-loading-screen .background > .bottom"], 1, {
+            height: 0,
+            ease: Cubic.easeOut,
+            delay: 4,
+            onStart: function () {
+                TweenMax.set(".minale-logo, .captions-full li:first-child .caption .subtitle, .captions-full li:first-child .caption h4", { autoAlpha: 0 });
+                $(".captions-full").css("display", "block");
+                TweenMax.set($captionTarget, { autoAlpha: 0 });
+            },
             onComplete: function () {
-                if (!isZoomedOut && !isMenuOpen && !$(".mm-overlay").is(":visible")) {
-                    var nextIndex = (slider.selectedIndex + 1) % slider.cells.length;
-                    $slidesList.flickity("select", nextIndex);
+                $preloader.remove();
+                $html.removeClass("preload");
+                playCurrentSlideVideo(0);
+                updateSlideUI(0);
+                window.zoomEffect();
+
+                if ($(".captions-full").length) {
+                    TweenMax.set($(".captions-full p"), { autoAlpha: 1 });
+                    $(".captions-full p").css("opacity", 1);
+                    TweenMax.fromTo(".captions-full li:first-child .caption .subtitle", 0.5, { autoAlpha: 0, ease: Cubic.easeOut }, { autoAlpha: 1 });
+                    TweenMax.fromTo(".captions-full li:first-child .caption h4", 0.5, { autoAlpha: 0, delay: 0.2, ease: Cubic.easeOut }, { autoAlpha: 1 });
+
+                    if (window.SplitText && $captionTarget.length) {
+                        var a = new SplitText($captionTarget, { type: "chars,words,lines" });
+                        TweenMax.set($captionTarget, { autoAlpha: 1 });
+                        TweenMax.staggerFrom(a.words, 2, { autoAlpha: 0, ease: Cubic.easeOut }, 0.02);
+                    } else {
+                        TweenMax.to($captionTarget, 1, { autoAlpha: 1, ease: Cubic.easeOut });
+                    }
                 }
             }
         });
+    } else {
+        $html.removeClass("preload");
+        playCurrentSlideVideo(0);
+        updateSlideUI(0);
+        window.zoomEffect();
     }
-
-    function pauseCountdown() {
-        if (countdownTween) countdownTween.pause();
-    }
-
-    function resumeCountdown() {
-        if (countdownTween && !isZoomedOut && !isMenuOpen && !$(".mm-overlay").is(":visible")) {
-            countdownTween.resume();
-        }
-    }
-
-    $sliderWrapper.on("mouseenter", pauseCountdown).on("mouseleave", resumeCountdown);
 
     // -------------------------------------------------------------
     // 6. FLOATING CURSOR AND CLICK NAVIGATION
@@ -379,6 +435,7 @@ $(function () {
                     }
                 });
                 startCountdown();
+                window.zoomEffect();
             }
         });
 
@@ -398,6 +455,7 @@ $(function () {
         slider.options.friction = 0.18;
         slider.updateDraggable();
         pauseCountdown();
+        window.zoomEffect(true);
 
         $(".next, .back").css({ width: "5%" });
         $viewToggle.addClass("active");
